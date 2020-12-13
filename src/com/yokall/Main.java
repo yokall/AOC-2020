@@ -1,11 +1,15 @@
 package com.yokall;
 
+import com.yokall.dayfour.PassportChecker;
 import com.yokall.dayone.ExpenseFixer;
 import com.yokall.daythree.TreeFinder;
 import com.yokall.daytwo.PasswordValidator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -13,6 +17,7 @@ public class Main {
         dayOne();
         dayTwo();
         dayThree();
+        dayFour();
     }
 
     private static void dayOne() {
@@ -1585,6 +1590,16 @@ public class Main {
         long answer2 = treeFinder.findTreesPartTwo(input, slopes);
 
         printAnswers("Day Three", String.valueOf(answer1), String.valueOf(answer2));
+    }
+
+    private static void dayFour() {
+        PassportChecker passportChecker = new PassportChecker();
+
+        int answer1 = passportChecker.checkPassports("DayFour.txt", false);
+
+        int answer2 = passportChecker.checkPassports("DayFour.txt", true);
+
+        printAnswers("Day Four", String.valueOf(answer1), String.valueOf(answer2));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
