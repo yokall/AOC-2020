@@ -1,15 +1,13 @@
 package com.yokall;
 
+import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
 import com.yokall.dayone.ExpenseFixer;
 import com.yokall.daythree.TreeFinder;
 import com.yokall.daytwo.PasswordValidator;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
 
@@ -18,6 +16,7 @@ public class Main {
         dayTwo();
         dayThree();
         dayFour();
+        dayFive();
     }
 
     private static void dayOne() {
@@ -1600,6 +1599,42 @@ public class Main {
         int answer2 = passportChecker.checkPassports("DayFour.txt", true);
 
         printAnswers("Day Four", String.valueOf(answer1), String.valueOf(answer2));
+    }
+
+    private static void dayFive() {
+        ArrayList<String> seatReferences = FileUtils.readLinesToArray("input/DayFive.txt");
+
+        ArrayList<Integer> seatIds = new ArrayList<>();
+
+        int highestSeatId = 0;
+        for (String seatReference : seatReferences) {
+            SeatFinder seatFinder = new SeatFinder();
+
+            int seatId = seatFinder.findSeatId(seatReference);
+
+            if (seatId > highestSeatId) {
+                highestSeatId = seatId;
+            }
+
+            seatIds.add(seatId);
+        }
+
+        ArrayList<Integer> missingSeatEdges = new ArrayList<>();
+
+        for (int seatId : seatIds) {
+            if (!(seatIds.contains(seatId - 1) && seatIds.contains(seatId + 1))) {
+                missingSeatEdges.add(seatId);
+            }
+        }
+
+        int missingSeatId = 0;
+        for (int seatId : missingSeatEdges) {
+            if (missingSeatEdges.contains(seatId + 2)) {
+                missingSeatId = seatId + 1;
+            }
+        }
+
+        printAnswers("Day Five", String.valueOf(highestSeatId), String.valueOf(missingSeatId));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
