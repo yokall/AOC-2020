@@ -12,8 +12,6 @@ public class PassportChecker {
         try {
             File myObj = new File("input/" + filename);
 
-            System.out.println("Absolute path: " + myObj.getAbsolutePath());
-
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String line = myReader.nextLine();
@@ -31,22 +29,31 @@ public class PassportChecker {
                     for (String property : properties) {
                         String[] parts = property.split(":");
 
-                        if (parts[0].equals("byr")) {
-                            passport.setByr(parts[1]);
-                        } else if (parts[0].equals("iyr")) {
-                            passport.setIyr(parts[1]);
-                        } else if (parts[0].equals("eyr")) {
-                            passport.setEyr(parts[1]);
-                        } else if (parts[0].equals("hgt")) {
-                            passport.setHgt(parts[1]);
-                        } else if (parts[0].equals("hcl")) {
-                            passport.setHcl(parts[1]);
-                        } else if (parts[0].equals("ecl")) {
-                            passport.setEcl(parts[1]);
-                        } else if (parts[0].equals("pid")) {
-                            passport.setPid(parts[1]);
-                        } else if (parts[0].equals("cid")) {
-                            passport.setCid(parts[1]);
+                        switch (parts[0]) {
+                            case "byr":
+                                passport.setByr(parts[1]);
+                                break;
+                            case "iyr":
+                                passport.setIyr(parts[1]);
+                                break;
+                            case "eyr":
+                                passport.setEyr(parts[1]);
+                                break;
+                            case "hgt":
+                                passport.setHgt(parts[1]);
+                                break;
+                            case "hcl":
+                                passport.setHcl(parts[1]);
+                                break;
+                            case "ecl":
+                                passport.setEcl(parts[1]);
+                                break;
+                            case "pid":
+                                passport.setPid(parts[1]);
+                                break;
+                            case "cid":
+                                passport.setCid(parts[1]);
+                                break;
                         }
                     }
                 }

@@ -3,6 +3,7 @@ package com.yokall;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
 import com.yokall.dayone.ExpenseFixer;
+import com.yokall.daysix.YesCounter;
 import com.yokall.daythree.TreeFinder;
 import com.yokall.daytwo.PasswordValidator;
 
@@ -17,6 +18,7 @@ public class Main {
         dayThree();
         dayFour();
         dayFive();
+        daySix();
     }
 
     private static void dayOne() {
@@ -1635,6 +1637,16 @@ public class Main {
         }
 
         printAnswers("Day Five", String.valueOf(highestSeatId), String.valueOf(missingSeatId));
+    }
+
+    private static void daySix() {
+        YesCounter yesCounter = new YesCounter();
+
+        int yesCountTotal = yesCounter.countEachGroupYesAnswers("input/DaySix.txt");
+
+        int individualYesCountTotal = yesCounter.countEveryoneYesAnswers("input/DaySix.txt");
+
+        printAnswers("Day Six", String.valueOf(yesCountTotal), String.valueOf(individualYesCountTotal));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
