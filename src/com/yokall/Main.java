@@ -1,5 +1,7 @@
 package com.yokall;
 
+import com.yokall.dayeight.BootCodeFixer;
+import com.yokall.dayeight.BootCodeRunner;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
 import com.yokall.dayone.ExpenseFixer;
@@ -21,6 +23,7 @@ public class Main {
         dayFive();
         daySix();
         daySeven();
+        dayEight();
     }
 
     private static void dayOne() {
@@ -1660,6 +1663,20 @@ public class Main {
         int howManyBagsAreContainedIn = bagTree.howManyBagsAreContainedInside("shiny gold");
 
         printAnswers("Day Seven", String.valueOf(howManyBagsContain), String.valueOf(howManyBagsAreContainedIn));
+    }
+
+    private static void dayEight() {
+        BootCodeRunner bootCodeRunner = new BootCodeRunner(FileUtils.readLinesToArray("input/DayEight.txt"));
+
+        bootCodeRunner.safeRunInstructions();
+
+        int accumulatorBeforeInfiniteLoop = bootCodeRunner.getAccumulator();
+
+        BootCodeFixer bootCodeFixer = new BootCodeFixer();
+
+        int fixedAccumulator = bootCodeFixer.fixBootInstructions(FileUtils.readLinesToArray("input/DayEight.txt"));
+
+        printAnswers("Day Eight", String.valueOf(accumulatorBeforeInfiniteLoop), String.valueOf(fixedAccumulator));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
