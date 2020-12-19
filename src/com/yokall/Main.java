@@ -3,6 +3,7 @@ package com.yokall;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
 import com.yokall.dayone.ExpenseFixer;
+import com.yokall.dayseven.BagTree;
 import com.yokall.daysix.YesCounter;
 import com.yokall.daythree.TreeFinder;
 import com.yokall.daytwo.PasswordValidator;
@@ -19,6 +20,7 @@ public class Main {
         dayFour();
         dayFive();
         daySix();
+        daySeven();
     }
 
     private static void dayOne() {
@@ -1647,6 +1649,17 @@ public class Main {
         int individualYesCountTotal = yesCounter.countEveryoneYesAnswers("input/DaySix.txt");
 
         printAnswers("Day Six", String.valueOf(yesCountTotal), String.valueOf(individualYesCountTotal));
+    }
+
+    private static void daySeven() {
+        BagTree bagTree = new BagTree();
+        bagTree.buildTree(FileUtils.readLinesToArray("input/DaySeven.txt"));
+
+        int howManyBagsContain = bagTree.howManyBagsContain("shiny gold", new ArrayList<>());
+
+        int howManyBagsAreContainedIn = bagTree.howManyBagsAreContainedInside("shiny gold");
+
+        printAnswers("Day Seven", String.valueOf(howManyBagsContain), String.valueOf(howManyBagsAreContainedIn));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
