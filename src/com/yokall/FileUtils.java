@@ -44,6 +44,25 @@ public class FileUtils {
         return lines;
     }
 
+    public static ArrayList<Integer> readLinesToIntegerArray(String filepath) {
+        ArrayList<Integer> lines = new ArrayList<>();
+
+        try {
+            File myObj = new File(filepath);
+
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                lines.add(Integer.parseInt(myReader.nextLine()));
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        return lines;
+    }
+
     public static ArrayList<String> readGroupsToArray(String filepath) {
         ArrayList<String> groups = new ArrayList<>();
 
