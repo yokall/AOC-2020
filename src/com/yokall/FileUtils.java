@@ -25,6 +25,25 @@ public class FileUtils {
         return lines;
     }
 
+    public static ArrayList<Long> readLinesToNumberArray(String filepath) {
+        ArrayList<Long> lines = new ArrayList<>();
+
+        try {
+            File myObj = new File(filepath);
+
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                lines.add(Long.parseLong(myReader.nextLine()));
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        return lines;
+    }
+
     public static ArrayList<String> readGroupsToArray(String filepath) {
         ArrayList<String> groups = new ArrayList<>();
 

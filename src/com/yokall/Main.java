@@ -4,6 +4,7 @@ import com.yokall.dayeight.BootCodeFixer;
 import com.yokall.dayeight.BootCodeRunner;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
+import com.yokall.daynine.CipherChecker;
 import com.yokall.dayone.ExpenseFixer;
 import com.yokall.dayseven.BagTree;
 import com.yokall.daysix.YesCounter;
@@ -24,6 +25,7 @@ public class Main {
         daySix();
         daySeven();
         dayEight();
+        dayNine();
     }
 
     private static void dayOne() {
@@ -1677,6 +1679,16 @@ public class Main {
         int fixedAccumulator = bootCodeFixer.fixBootInstructions(FileUtils.readLinesToArray("input/DayEight.txt"));
 
         printAnswers("Day Eight", String.valueOf(accumulatorBeforeInfiniteLoop), String.valueOf(fixedAccumulator));
+    }
+
+    private static void dayNine() {
+        CipherChecker cipherChecker = new CipherChecker("input/DayNine.txt");
+
+        Long firstInvalidNumber = cipherChecker.findInvalidNumber(25);
+
+        Long contiguousSum = cipherChecker.findContiguousSum(firstInvalidNumber);
+
+        printAnswers("Day Nine", String.valueOf(firstInvalidNumber), String.valueOf(contiguousSum));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
