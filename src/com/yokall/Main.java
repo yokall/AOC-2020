@@ -2,6 +2,7 @@ package com.yokall;
 
 import com.yokall.dayeight.BootCodeFixer;
 import com.yokall.dayeight.BootCodeRunner;
+import com.yokall.dayeleven.WaitingSeatFinder;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
 import com.yokall.daynine.CipherChecker;
@@ -28,6 +29,7 @@ public class Main {
         dayEight();
         dayNine();
         dayTen();
+        dayEleven();
     }
 
     private static void dayOne() {
@@ -1701,6 +1703,26 @@ public class Main {
         int numberOfCombinations = adapterSorterOuter.calculateCombinations();
 
         printAnswers("Day Ten", String.valueOf(adapterDifference), String.valueOf(numberOfCombinations));
+    }
+
+    private static void dayEleven() {
+        WaitingSeatFinder waitingSeatFinder = new WaitingSeatFinder("input/DayEleven.txt");
+
+        while (waitingSeatFinder.isNotStabilised()) {
+            waitingSeatFinder.runRules(false);
+        }
+
+        int seatCount = waitingSeatFinder.countSeats();
+
+        waitingSeatFinder = new WaitingSeatFinder("input/DayEleven.txt");
+
+        while (waitingSeatFinder.isNotStabilised()) {
+            waitingSeatFinder.runRules(true);
+        }
+
+        int secondSeatCount = waitingSeatFinder.countSeats();
+
+        printAnswers("Day Eleven", String.valueOf(seatCount), String.valueOf(secondSeatCount));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
