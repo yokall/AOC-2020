@@ -10,6 +10,7 @@ import com.yokall.dayone.ExpenseFixer;
 import com.yokall.dayseven.BagTree;
 import com.yokall.daysix.YesCounter;
 import com.yokall.dayten.AdapterSorterOuter;
+import com.yokall.daythirteen.BusFinder;
 import com.yokall.daythree.TreeFinder;
 import com.yokall.daytwelve.NavigationComputer;
 import com.yokall.daytwo.PasswordValidator;
@@ -32,6 +33,7 @@ public class Main {
         dayTen();
         dayEleven();
         dayTwelve();
+        dayThirteen();
     }
 
     private static void dayOne() {
@@ -1737,6 +1739,19 @@ public class Main {
         int secondManhattanDistance = navigationComputer.runInstructionsTwo();
 
         printAnswers("Day Twelve", String.valueOf(manhattanDistance), String.valueOf(secondManhattanDistance));
+    }
+
+    private static void dayThirteen() {
+        List<String> input = FileUtils.readLinesToArray("input/DayThirteen.txt");
+
+        int earliestDepartTime = Integer.parseInt(input.get(0));
+        String buses = input.get(1);
+
+        int ans1 = BusFinder.findEarliestBus(earliestDepartTime, buses);
+
+//        long ans2 = BusFinder.findSyncTimestamp(buses);
+
+        printAnswers("Day Thirteen", String.valueOf(ans1), String.valueOf(ans1));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
