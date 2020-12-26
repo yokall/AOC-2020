@@ -11,6 +11,7 @@ import com.yokall.dayseven.BagTree;
 import com.yokall.daysix.YesCounter;
 import com.yokall.dayten.AdapterSorterOuter;
 import com.yokall.daythree.TreeFinder;
+import com.yokall.daytwelve.NavigationComputer;
 import com.yokall.daytwo.PasswordValidator;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Main {
         dayNine();
         dayTen();
         dayEleven();
+        dayTwelve();
     }
 
     private static void dayOne() {
@@ -1723,6 +1725,18 @@ public class Main {
         int secondSeatCount = waitingSeatFinder.countSeats();
 
         printAnswers("Day Eleven", String.valueOf(seatCount), String.valueOf(secondSeatCount));
+    }
+
+    private static void dayTwelve() {
+        NavigationComputer navigationComputer = new NavigationComputer(FileUtils.readLinesToArray("input/DayTwelve.txt"));
+
+        int manhattanDistance = navigationComputer.runInstructions();
+
+        navigationComputer = new NavigationComputer(FileUtils.readLinesToArray("input/DayTwelve.txt"));
+
+        int secondManhattanDistance = navigationComputer.runInstructionsTwo();
+
+        printAnswers("Day Twelve", String.valueOf(manhattanDistance), String.valueOf(secondManhattanDistance));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
