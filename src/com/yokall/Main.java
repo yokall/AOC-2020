@@ -5,6 +5,7 @@ import com.yokall.dayeight.BootCodeRunner;
 import com.yokall.dayeleven.WaitingSeatFinder;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
+import com.yokall.dayfourteen.DockingTranslator;
 import com.yokall.daynine.CipherChecker;
 import com.yokall.dayone.ExpenseFixer;
 import com.yokall.dayseven.BagTree;
@@ -34,6 +35,7 @@ public class Main {
         dayEleven();
         dayTwelve();
         dayThirteen();
+        dayFourteen();
     }
 
     private static void dayOne() {
@@ -1752,6 +1754,14 @@ public class Main {
 //        long ans2 = BusFinder.findSyncTimestamp(buses);
 
         printAnswers("Day Thirteen", String.valueOf(ans1), String.valueOf(ans1));
+    }
+
+    private static void dayFourteen() {
+        DockingTranslator dockingTranslator = new DockingTranslator();
+
+        double sum = dockingTranslator.sumMemoryValues(FileUtils.readLinesToArray("input/DayFourteen.txt"));
+
+        printAnswers("Day Fourteen", String.format ("%.0f", sum), String.valueOf(sum));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
