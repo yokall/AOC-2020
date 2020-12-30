@@ -21,4 +21,11 @@ class DockingTranslatorTest {
 
         assertEquals(165, actual);
     }
+
+    @Test
+    void sumMemoryValuesV2() {
+        double actual = dockingTranslator.sumMemoryValuesV2(FileUtils.readLinesToArray("input/DayFourteenTestTwo.txt"));
+
+        assertEquals(208, actual);
+    }
 }

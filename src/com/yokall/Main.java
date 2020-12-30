@@ -1761,7 +1761,11 @@ public class Main {
 
         double sum = dockingTranslator.sumMemoryValues(FileUtils.readLinesToArray("input/DayFourteen.txt"));
 
-        printAnswers("Day Fourteen", String.format ("%.0f", sum), String.valueOf(sum));
+        dockingTranslator = new DockingTranslator();
+
+        double sum2 = dockingTranslator.sumMemoryValuesV2(FileUtils.readLinesToArray("input/DayFourteen.txt"));
+
+        printAnswers("Day Fourteen", String.format ("%.0f", sum), String.format ("%.0f", sum2));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
