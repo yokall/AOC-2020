@@ -45,8 +45,6 @@ public class AdapterSorterOuter {
         int numberOfCombinations = 0;
 
         for (int i = 1; i <= adapterRatings.get(adapterRatings.size()-1); i += 3) {
-            System.out.println(i);
-
             if (adapterRatings.contains(i + 1)) {
                 ++numberOfCombinations;
             }

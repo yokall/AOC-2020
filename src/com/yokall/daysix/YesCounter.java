@@ -37,7 +37,6 @@ public class YesCounter {
             String[] individualYesAnswers = group.split(",");
 
             if (individualYesAnswers.length == 1) {
-                System.out.println("Only 1 person: " + individualYesAnswers[0]);
                 yesCountTotal += individualYesAnswers[0].length();
             }
             else {
