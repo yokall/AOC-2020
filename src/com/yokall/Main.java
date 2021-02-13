@@ -3,6 +3,7 @@ package com.yokall;
 import com.yokall.dayeight.BootCodeFixer;
 import com.yokall.dayeight.BootCodeRunner;
 import com.yokall.dayeleven.WaitingSeatFinder;
+import com.yokall.dayfifteen.MemoryGame;
 import com.yokall.dayfive.SeatFinder;
 import com.yokall.dayfour.PassportChecker;
 import com.yokall.dayfourteen.DockingTranslator;
@@ -17,6 +18,7 @@ import com.yokall.daytwelve.NavigationComputer;
 import com.yokall.daytwo.PasswordValidator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -36,6 +38,7 @@ public class Main {
         dayTwelve();
         dayThirteen();
         dayFourteen();
+        dayFifteen();
     }
 
     private static void dayOne() {
@@ -1766,6 +1769,18 @@ public class Main {
         double sum2 = dockingTranslator.sumMemoryValuesV2(FileUtils.readLinesToArray("input/DayFourteen.txt"));
 
         printAnswers("Day Fourteen", String.format ("%.0f", sum), String.format ("%.0f", sum2));
+    }
+
+    private static void dayFifteen() {
+        List<Integer> startingNumbers = new ArrayList<>(Arrays.asList(0,1,5,10,3,12,19));
+
+        MemoryGame memoryGame = new MemoryGame();
+
+        int answer1 = memoryGame.partOne(startingNumbers, 2020);
+
+        int answer2 = memoryGame.partOne(startingNumbers,30000000);
+
+        printAnswers("Day Fifteen", String.valueOf(answer1), String.valueOf(answer2));
     }
 
     private static void printAnswers(String day, String answer1, String answer2) {
